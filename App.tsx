@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import MuhurtaCard from './components/MuhurtaCard';
@@ -348,14 +347,24 @@ const App: React.FC = () => {
         {/* PRINT-ONLY HEADER */}
         {lastRequest && (
           <div className="hidden print:block mb-8 border-b-2 border-stone-800 pb-4">
+            <div className="flex justify-between items-center mb-4">
+              <div className="flex items-center gap-3">
+                {/* Replace the src with your actual logo path or a base64 string */}
+                <img src="/logo.png" alt="Sumuhoorta Logo" className="h-12 w-12" />
+                <h1 className="text-4xl font-cinzel font-bold text-orange-900">SUMUHOORTA</h1>
+              </div>
+            </div>
+            
             <div className="flex justify-between items-start">
               <div>
-                <h1 className="text-3xl font-cinzel font-bold text-orange-900">{t.reportTitle}</h1>
+                <h2 className="text-2xl font-cinzel font-bold text-orange-800">{t.reportTitle}</h2>
                 <p className="text-sm text-stone-600 italic">Vedic Astrology Analysis</p>
               </div>
               <div className="text-right">
                 <p className="text-[10px] font-bold text-stone-500 uppercase tracking-widest">{t.generatedOn}</p>
-                <p className="text-sm font-bold">{new Date().toLocaleDateString(language, { dateStyle: 'medium' })}</p>
+                <p className="text-sm font-bold">
+                  {new Date().toLocaleDateString(language, { day: 'numeric', month: 'long', year: 'numeric' })}
+                </p>
               </div>
             </div>
 

@@ -2,7 +2,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { MuhurtaRequest, MuhurtaResponse, Language } from "../types";
 
-const genAI = new GoogleGenAI({ apiKey: process.env.API_KEY || "" });
+const genAI = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || "" });
 
 /**
  * Generates a deterministic numeric seed from the request object
@@ -41,11 +41,17 @@ export const findMuhurtas = async (req: MuhurtaRequest): Promise<MuhurtaResponse
     - Nakshatra Pada: ${p.nakshatraPada}`;
   }).join("\n");
 
-  let languageInstruction = "Provide all text fields in English.";
+  // For English
+  let languageInstruction = "Provide all text fields in English. CRITICAL: Use full names for months (e.g., 'February' instead of 'Feb').";
+
+  // For Kannada
   if (req.language === Language.KANNADA) {
-    languageInstruction = "CRITICAL: The user speaks ONLY KANNADA. Do NOT use any English words, Latin characters, or parentheses containing English in the output. Translate EVERYTHING. Use KANNADA script for all fields: 'summary', 'day', 'timeRange', 'tithi', 'nakshatra', 'yoga', and 'description'. Ensure 100% pure Kannada content.";
-  } else if (req.language === Language.HINDI) {
-    languageInstruction = "CRITICAL: The user speaks ONLY HINDI. Do NOT use any English words, Latin characters, or parentheses containing English in the output. Translate EVERYTHING. Use DEVANAGARI script for all fields: 'summary', 'day', 'timeRange', 'tithi', 'nakshatra', 'yoga', and 'description'. Ensure 100% pure Hindi content.";
+    languageInstruction = "CRITICAL: The user speaks ONLY KANNADA... Use full names for months (e.g., 'ಫೆಬ್ರವರಿ' instead of 'ಫೆಬ್ರ')...";
+  }
+
+  // For Hindi
+  else if (req.language === Language.HINDI) {
+    languageInstruction = "CRITICAL: The user speaks ONLY HINDI... Use full names for months (e.g., 'फ़रवरी' instead of 'फ़र')...";
   }
 
   const dateContext = req.searchMode === 'specific'
