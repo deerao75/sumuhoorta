@@ -321,7 +321,7 @@ ${S}`)}return p}),Aa=PC(Sg);/**
     Utilize the **Drik Ganitha** (Precise Astronomical) method for time transitions.
     
     PRECISION REQUIREMENT:
-    Traditional Muhurta is exactly a 48-minute period. While you may identify a broad favorable window (e.g., 2-3 hours), you MUST identify the most potent **48-minute peak** within that window for the 'timeRange' field. 
+    A traditional Muhurta is exactly a 48-minute period. You MUST identify only the most potent **48-minute peak** for the 'timeRange' field, rather than broad 2-3 hour windows. 
     
     Crucially, consider the "Nakshatra Pada" for fine-grained compatibility (Tara Bala and Chandra Bala). 
     ${i.people.length>1?"For Marriage/Engagement, perform a detailed Melapak analysis (Ashta-kuta) considering the Nakshatras and Padas of both individuals to find shared auspicious windows.":"Ensure the Muhurta is specifically strengthened for the individual's birth star and pada."}
