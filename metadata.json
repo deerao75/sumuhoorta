@@ -1,0 +1,7 @@
+{
+  "name": "Sumuhoorta",
+  "description": "A comprehensive Vedic Astrology tool to find auspicious timings (Muhurtas) for marriage, business, house warming, and more over a 6-month horizon.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
