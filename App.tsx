@@ -267,6 +267,29 @@ const App: React.FC = () => {
   const renderPersonForm = (person: PersonDetails, setPerson: React.Dispatch<React.SetStateAction<PersonDetails>>, title: string) => (
     <div className="space-y-6 bg-stone-50/50 p-6 rounded-2xl border border-stone-100">
       <h3 className="text-orange-900 font-cinzel text-lg border-b border-orange-100 pb-2 font-bold">{title}</h3>
+      {/* Minimum Details Guidance Note */}
+      <div className="mt-2 mb-4 p-4 bg-orange-50 border-l-4 border-orange-200 rounded-r-xl">
+        <div className="flex gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-orange-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <p className="text-sm font-semibold text-orange-900 mb-1">
+              {language === Language.KANNADA ? 'ಕನಿಷ್ಠ ಅಗತ್ಯವಿರುವ ವಿವರಗಳು:' : 
+              language === Language.HINDI ? 'न्यूनतम आवश्यक विवरण:' : 
+              'Minimum Required Details:'}
+            </p>
+            <p className="text-xs text-stone-700 leading-relaxed">
+              {t.birthDetailsNote}
+            </p>
+            <p className="text-[10px] text-stone-500 mt-2 italic">
+              {language === Language.KANNADA ? '* ಸಮಯ ತಿಳಿದಿಲ್ಲದಿದ್ದರೆ, ಸರಿಸುಮಾರು ಸಮಯವನ್ನು ನೀಡಿ.' : 
+              language === Language.HINDI ? '* यदि समय ज्ञात नहीं है, तो अनुमानित समय दें।' : 
+              '* If exact time is unknown, an approximate time is sufficient.'}
+            </p>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
           <label className="block text-[10px] font-bold text-stone-500 uppercase mb-1">{t.dob}</label>
