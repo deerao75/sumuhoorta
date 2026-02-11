@@ -534,6 +534,34 @@ const App: React.FC = () => {
             </div>
           </div>
         )}
+        {/* ADD THIS BLOCK HERE */}
+        {loading && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-stone-900/60 backdrop-blur-sm no-print">
+            <div className="bg-white p-10 rounded-3xl shadow-2xl flex flex-col items-center border border-orange-100 max-w-sm w-full mx-4">
+              {/* The Spinning Circle */}
+              <div className="w-16 h-16 border-4 border-orange-100 border-t-orange-600 rounded-full animate-spin mb-6"></div>
+              
+              {/* Work in Progress Message */}
+              <h3 className="text-xl font-cinzel font-bold text-orange-900 mb-2 text-center">
+                {language === Language.KANNADA ? 'ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...' : 
+                 language === Language.HINDI ? 'विश्लेषण किया जा रहा है...' : 
+                 'Analyzing Celestial Path...'}
+              </h3>
+              
+              <p className="text-stone-600 text-center text-sm leading-relaxed">
+                {language === Language.KANNADA ? 'ಗ್ರಹಗತಿಗಳನ್ನು ಲೆಕ್ಕಹಾಕಲಾಗುತ್ತಿದೆ. ದಯವಿಟ್ಟು ಕೆಲವು ಕ್ಷಣ ಕಾಯಿರಿ.' : 
+                 language === Language.HINDI ? 'ग्रहों की गणना की जा रही है। कृपया कुछ क्षण प्रतीक्षा करें।' : 
+                 'Calculating precise auspicious windows. Please wait a moment.'}
+              </p>
+              
+              <div className="mt-6 flex gap-1">
+                <span className="w-2 h-2 bg-orange-400 rounded-full animate-bounce"></span>
+                <span className="w-2 h-2 bg-orange-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                <span className="w-2 h-2 bg-orange-600 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );
